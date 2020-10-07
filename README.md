@@ -12,7 +12,7 @@ objects. The entry point is the main method in the class `CI646.week4.Main`.
 Run the `main` method and study the code of all classes until you understand the application.
 
 2. The `Book` class contains methods for printing the details of books, such as
-printContents. Which SOLID principles does this violate?
+`printContents`. Which SOLID principles does this violate?
 
 3. There are several ways we could begin to improve the `Book` class. We could
 create interfaces that specify the methods that printable/formattable objects should implement. However, since all formattable book objects will
@@ -72,8 +72,8 @@ the constructor of the parent class:
         }
 
     `BookContentsFormatter` needs to override the abstract method from its
-parent class. The format method should produce a `String` which is the
-same as that printed by the for loop in the main method. `BookContentsFormatter`
+parent class. The `format` method should produce a `String` which is the
+same as that printed by the `for` loop in the main method. `BookContentsFormatter`
 can be supplied wherever its parent class is expected (*Liskov Substitution
 Principle*)
 
@@ -105,7 +105,9 @@ with books.
     You are going to move some of this persistence-related code into an interface in order to support the *Interface Segregation Principle*.
 In the package `CI646.books`, create an interface called `BookPersister`.
 This interface should extend the `Serializable` interface. Move the `read`
-method from the `Book` class to the new interface (note this is only possible because `read` is a static method). Declare the `read` method in the
+method from the `Book` class to the new interface (note this is only possible because `read` is a static method). 
+
+    Declare the `save` method in the
 interface but don’t define it. That is, the interface should contain this
 line:
 
@@ -114,7 +116,7 @@ line:
     which will force all classes which implement the `BookPersister` interface
 to provide an implementation of the save method.
 
-9. Change the Book class so that it implements the `BookPersister` interface
+9. Change the `Book` class so that it implements the `BookPersister` interface
 instead of `Serializable`. Now change the line in the `main` method that
 reads in the `Book` object to use the new interface:
 
